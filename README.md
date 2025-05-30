@@ -1,46 +1,95 @@
-UDP Server
-A simple UDP server written in C that listens for incoming messages on a specified port and prints them to the console. This project is designed for red teaming exercises to test network communication and message handling.
-Features
+# UDP Server
 
-Listens for UDP messages on port 8080.
-Displays the sender's IP address, port, and message content.
-Includes basic error handling for socket creation and binding.
+**UDP Server** is a lightweight **C-based tool** that listens for incoming **UDP messages** on a specified port (default: `8080`) and prints the data to the console. This utility is designed for use in **red teaming scenarios**, **network testing**, and **message handling exercises**.
 
-Prerequisites
+---
 
-A C compiler (e.g., gcc)
-Linux/Unix-based system with standard networking libraries
+## Overview
 
-Installation
+This server helps assess UDP communication on target systems and provides a straightforward method to receive and inspect payloads, beacons, or test messages over the network.
 
-Clone the repository:git clone https://github.com/yourusername/udp-server.git
+---
 
+## Features
 
-Navigate to the project directory:cd udp-server
+- **UDP Listener**: Listens on port `8080` by default.
+- **Message Logging**: Displays sender IP, port, and received message.
+- **Lightweight**: Minimal external dependencies.
+- **Error Handling**: Handles basic socket errors and binding failures.
 
+---
 
-Compile the code:gcc udp_server.c -o udp_server
+## Prerequisites
 
+- A **C compiler** (e.g., `gcc`)
+- A **Linux/Unix-based system**
+- Basic networking support (BSD sockets)
 
+---
 
-Usage
+## Installation
 
-Run the server:./udp_server
+Clone the repository:
 
+```bash
+git clone https://github.com/yourusername/udp-server.git
+cd udp-server
+````
 
-The server will listen on port 8080 for incoming UDP messages.
-Send a test message using a tool like netcat:echo "Test message" | nc -u 127.0.0.1 8080
+Compile the source code:
 
+```bash
+gcc udp_server.c -o udp_server
+```
 
-The server will print the received message along with the client's IP and port.
+---
 
-Notes
+## Usage
 
-The server runs indefinitely until manually stopped (Ctrl+C).
-The port number (8080) is defined in the code (PORT macro) and can be modified as needed.
-Ensure the port is not blocked by a firewall or already in use.
+Run the server:
 
-License
-MIT License
-Contributing
-Feel free to submit issues or pull requests for improvements or bug fixes.
+```bash
+./udp_server
+```
+
+The server will begin listening on **UDP port 8080**.
+
+To test, use a tool such as `netcat` from another terminal or host:
+
+```bash
+echo "Test message" | nc -u 127.0.0.1 8080
+```
+
+### Example Output
+
+```text
+Received message from 127.0.0.1:54321
+Message: Test message
+```
+
+---
+
+## Notes
+
+* The server runs **indefinitely** until manually terminated (`Ctrl+C`).
+* The port number is defined as a macro (`PORT`) in the source file and can be modified to suit operational needs.
+* Ensure **firewall rules** allow UDP traffic on the desired port.
+* This server is **single-threaded** and handles messages sequentially.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+See the [LICENSE](LICENSE) file for more information.
+
+---
+
+## Contributing
+
+Contributions are welcome. Submit issues or pull requests to:
+
+* Improve performance
+* Add features (e.g., multithreading, logging)
+* Fix bugs or improve compatibility
+
