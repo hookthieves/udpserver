@@ -32,7 +32,7 @@ This server helps assess UDP communication on target systems and provides a stra
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/udp-server.git
+git clone https://github.com/hookthieves/udp-server.git
 cd udp-server
 ````
 
